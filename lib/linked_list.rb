@@ -14,14 +14,14 @@ class LinkedList
     node = @head
 
     while !node.nil?
-      yield node.info
+      yield node
       node = node.next_node
     end
   end
 
   def to_s
     string = []
-    self.each { |node| string << node }
+    self.each { |node| string << node.info }
     string = string.join(", ")
     "LinkedList(#{string})"
   end
