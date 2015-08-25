@@ -38,9 +38,31 @@ class LinkedList
     node.nil? ? nil : node
   end
 
-  def insert
+  def insert(index, value)
+    if index == 0
+      self.prepend(value)
+    else
+      index_counter = 0
+      node = @head
+
+      while index_counter < index - 1
+        node = node.next_node unless node.nil?
+        index_counter += 1
+      end
+
+      if node.nil?
+        nil
+      else
+        node.next_node = Node.new(value, node.next_node)
+      end
+    end
   end
 
-  def remove
+  def remove(index)
+    if index == 0
+      @head = @head.next_node
+    else
+      self[index-1].next_node = self[index+1]
+    end
   end
 end
